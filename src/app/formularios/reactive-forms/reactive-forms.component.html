@@ -1,0 +1,168 @@
+<div class="row">
+    <h1>Formulario</h1>
+    <form
+      (ngSubmit)="onSubmit()"
+      [formGroup]="registerForms"
+      autocomplete="off"
+      class="row g-3"
+    >
+
+
+
+      <div class="row g-3 mt-3">
+        <div class="col-6">
+          <label for="nameInput" class="form-label">Nombre</label>
+          <input
+            [formControl] = 'nombreControl'
+            type="text"
+            [ngClass]="{ 'is-invalid': nombreControl.invalid && nombreControl.touched}"
+            class="form-control"
+            id="nameInput"
+            placeholder="Nombre"
+          />
+          <div class="form-text">Minimo 3 Caracteres.</div>
+          <div
+          *ngIf="nombreControl.hasError('required') && nombreControl.touched"
+          class="invalid-feedback">
+          Este campo es obligatorio
+          </div>
+
+        </div>
+        <div class="col-6">
+          <label for="apellidoInput" class="form-label"
+            >Apellido</label
+          >
+          <input
+          [formControl] = 'apellidoControl'
+            type="text"
+            [ngClass]="{ 'is-invalid': apellidoControl.invalid && apellidoControl.touched}"
+            class="form-control"
+            id="apellidosInput"
+            placeholder="Apellidos"
+          />
+          <div class="form-text">Minimo de 5 caracteres</div>
+          <div
+          *ngIf="apellidoControl.hasError('required') && apellidoControl.touched"
+          class="invalid-feedback">
+            Este campo es obligatorio
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="emailInput" class="form-label">Correo</label>
+          <input
+            [formControl]="emailControl"
+            type="email"
+            [ngClass]="{ 'is-invalid': emailControl.invalid && emailControl.touched}"
+            class="form-control"
+            id="emailInput"
+            placeholder="ejemplo@mail.com"
+          />
+          <div *ngIf="emailControl.hasError('required') && emailControl.touched" class="invalid-feedback">
+            Este campo es obligatorio
+          </div>
+          <div *ngIf="emailControl.hasError('email') && emailControl.touched" class="invalid-feedback">
+            No es un Email Valido
+          </div>
+        </div>
+
+
+        <div class="col-6">
+          <label for="passInput" class="form-label">Contraseña</label>
+          <input
+          [formControl]="contrasenaControl"
+            type="password"
+            [ngClass]="{ 'is-invalid': contrasenaControl.invalid && contrasenaControl.touched } "
+            class="form-control"
+            id="passInput"
+            placeholder="Escribe tu Contraseña"
+          />
+          <div class="form-text">Minimo de 8 caracteres</div>
+          <div
+          *ngIf="contrasenaControl.hasError('required') && contrasenaControl.touched"
+          class="invalid-feedback">
+            Este campo es obligatorio
+          </div>
+        </div>
+
+
+        <div class="col-12">
+          <label for="addressInput">Direccion</label>
+          <input
+          [formControl]="direccionControl"
+            type="text"
+            [ngClass]="{ 'is-invalid': direccionControl.invalid && direccionControl.touched } "
+            class="form-control"
+            id="inputAddress"
+            placeholder="1234    Tu calle"
+          />
+          <div class="form-text">Minimo de 5 caracteres</div>
+          <div
+          *ngIf="direccionControl.hasError('required') && direccionControl.touched"
+          class="invalid-feedback">
+            Este campo es obligatorio
+          </div>
+        </div>
+
+
+        <div class="col-4">
+          <label for="cityInput">Ciudad</label>
+          <input
+          [formControl]="ciudadControl"
+            type="text"
+            [ngClass]="{ 'is-invalid': ciudadControl.invalid && ciudadControl.touched } "
+            class="form-control"
+            id="cityInput"
+            placeholder="Córdoba"
+          />
+          <div class="form-text">Minimo de 4 caracteres</div>
+          <div
+          *ngIf="ciudadControl.hasError('required') && ciudadControl.touched"
+          class="invalid-feedback">
+            Este campo es obligatorio
+          </div>
+        </div>
+        <div class="col-4">
+          <label for="codigoInput">Codigo Postal</label>
+          <input
+          [formControl]="codigoControl"
+            type="text"
+            [ngClass]="{ 'is-invalid': codigoControl.invalid && codigoControl.touched } "
+            class="form-control"
+            id="codigoInput"
+            placeholder="B5000"
+          />
+          <div class="form-text">Minimo y Maximo de 5 Caracteres</div>
+          <div
+          *ngIf="codigoControl.hasError('required') && codigoControl.touched"
+          class="invalid-feedback">
+            Este campo es obligatorio
+          </div>
+          <div
+          *ngIf="codigoControl.hasError('maxLength') && codigoControl.touched" class="invalid-feedback">
+            Maximo 5 Caracteres
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="codigoInput">Pais</label>
+          <input
+          [formControl]="paisControl"
+            type="text"
+            [ngClass]="{ 'is-invalid': paisControl.invalid && paisControl.touched } "
+            class="form-control"
+            id="codigoInput"
+            placeholder="B5000"
+          />
+          <div class="form-text">Minimo de 4 caracteres</div>
+          <div
+          *ngIf="paisControl.hasError('required') && paisControl.touched"
+          class="invalid-feedback">
+            Este campo es obligatorio
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Registrarse</button>
+        </div>
+      </div>
+    </form>
+</div>
